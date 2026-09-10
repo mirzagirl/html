@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+
+section {
+  position: relative; min-height: 100vh; width: 100%; display: flex;
+  align-items: center; justify-content: center; overflow: hidden;
+  color: #fff; background: #121321; perspective: 1000px;
+}
+
+section::before, section::after {
+  position: absolute; content: ""; width: 240px; height: 240px;
+  border-radius: 50%; background: linear-gradient(90deg, #9c27b0, #f3f5f5);
+}
+
+section::before { transform: translate(-150px, -100px); }
+section::after { transform: translate(150px, 100px); }
+
+.container {
+  position: relative; z-index: 1; width: 375px; height: 225px;
+  transition: transform 0.6s; transform-style: preserve-3d;
+}
+
+.container:hover { transform: rotateY(180deg); }
+
+.container .card {
+  position: absolute; width: 100%; height: 100%; padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 25px;
+  background: rgba(255, 255, 255, 0.1); box-shadow: 0 25px 45px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+  backface-visibility: hidden;
+}
+
+.front-face header, .front-face .logo, .front-face .card-details, .card.back-face .signature { display: flex; }
+.front-face header { justify-content: space-between; }
+.front-face header, .front-face .logo, .front-face .card-details { align-items: center; }
+.front-face .logo img { width: 48px; margin-right: 10px; }
+h5 { font-size: 16px; font-weight: 400; }
+h6 { font-size: 10px; font-weight: 400; }
+.front-face .chip { width: 50px; }
+.front-face .card-details { justify-content: space-between; align-items: flex-end; margin-top: 40px; }
+h5.number { font-size: 18px; letter-spacing: 1px; }
+h5.name { margin-top: 20px; }
+
+.card.back-face { padding: 15px 25px 25px; border: none; transform: rotateY(180deg); }
+.card.back-face h6 { font-size: 8px; }
+.card.back-face .magnetic-strip { position: absolute; top: 40px; left: 0; width: 100%; height: 45px; background: #000; }
+.card.back-face .signature {
+  justify-content: flex-end; align-items: center; width: 85%; height: 40px; margin-top: 80px;
+  border-radius: 6px; background: repeating-linear-gradient(#fff, #fff 3px, #efefef 0, #efefef 9px);
+}
+.signature i { z-index: -1; margin-right: -30px; padding: 4px 6px; border-radius: 4px; color: #000; font-size: 12px; background: #fff; }
+.card.back-face h5 { margin-top: 15px; font-size: 8px; }
